@@ -170,6 +170,19 @@ export const api = {
     });
     if (!response.ok) throw new Error('Failed to fetch forecast');
     return response.json();
+  },
+
+  updateUser: async (data) => {
+    const response = await fetch(`${API_URL}/profile`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to update profile');
+    }
+    return response.json();
   }
 };
 

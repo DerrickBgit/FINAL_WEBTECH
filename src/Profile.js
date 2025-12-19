@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Mail, Calendar, Shield, Edit2, Save, X, LogOut } from 'lucide-react';
+import { api } from './utils/api';
 import './Profile.css';
 
 export default function Profile() {
@@ -42,16 +43,17 @@ export default function Profile() {
   };
 
   const handleSave = async () => {
-    setUser({
-      ...user,
-      ...editedUser
-    });
-    localStorage.setItem('user', JSON.stringify({
-      ...user,
-      ...editedUser
-    }));
-    setIsEditing(false);
-    alert('Profile updated successfully!');
+    try {
+      const response = await api.updateUser(editedUser);
+      const updatedUser = response.user;
+      
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      setIsEditing(false);
+      alert('Profile updated successfully!');
+    } catch (error) {
+      alert(error.message || 'Failed to update profile');
+    }
   };
 
   const handleChange = (e) => {
