@@ -57,3 +57,4 @@ if (process.env.DATABASE_URL && process.env.DATABASE_URL.includes('postgresql://
 }
 
 console.log('✨ Setup complete!');
+

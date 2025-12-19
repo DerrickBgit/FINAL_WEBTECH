@@ -81,3 +81,4 @@ SELECT 'Categories inserted: ' || COUNT(*) FROM "categories";
 SELECT 'Items inserted: ' || COUNT(*) FROM "items";
 SELECT 'Stock movements inserted: ' || COUNT(*) FROM "stock_movements";
 SELECT 'Sales inserted: ' || COUNT(*) FROM "sales";
+
