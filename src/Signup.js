@@ -5,7 +5,7 @@ import LoadingScreen from './LoadingScreen';
 import Iridescence from './iridescence.jsx';
 import './Login.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 export default function SignupPage() {
   const navigate = useNavigate();
