@@ -1,0 +1,98 @@
+.split-text-test-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  padding: 2rem;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.test-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #e2e8f0;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease;
+  margin-bottom: 3rem;
+}
+
+.back-button:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
+  transform: translateX(-4px);
+}
+
+.test-section {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  color: #60a5fa;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.test-text {
+  color: #e2e8f0;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin: 1rem 0;
+}
+
+.test-heading {
+  color: #94a3b8;
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.test-heading h2 {
+  color: #60a5fa;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.test-heading h3 {
+  color: #8b5cf6;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .split-text-test-page {
+    padding: 1rem;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .test-section {
+    padding: 1.5rem;
+  }
+}
+

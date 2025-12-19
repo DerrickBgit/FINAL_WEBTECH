@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  passwordHash String @map("password_hash")
+  firstName String?  @map("first_name")
+  lastName  String?  @map("last_name")
+  role      String   @default("user")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  categories Category[]
+  items     Item[]
+  stockMovements StockMovement[]
+  sales     Sale[]
+
+  @@map("users")
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  userId      Int      @map("user_id")
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  items       Item[]
+
+  @@unique([userId, name])
+  @@map("categories")
+}
+
+model Item {
+  id            Int      @id @default(autoincrement())
+  name          String
+  description   String?
+  sku           String?
+  userId        Int      @map("user_id")
+  user          User     @relation(fields: [userId], references: [id])
+  categoryId    Int      @map("category_id")
+  category      Category @relation(fields: [categoryId], references: [id])
+  currentStock  Int      @default(0) @map("current_stock")
+  minStock      Int      @default(0) @map("min_stock")
+  unitPrice     Decimal  @default(0) @map("unit_price") @db.Decimal(10, 2)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  stockMovements StockMovement[]
+  sales         Sale[]
+
+  @@unique([userId, sku])
+  @@map("items")
+}
+
+model StockMovement {
+  id          Int      @id @default(autoincrement())
+  itemId      Int      @map("item_id")
+  item        Item     @relation(fields: [itemId], references: [id])
+  type        String   // "in" or "out"
+  quantity    Int
+  reason      String?  // "purchase", "sale", "adjustment", "return", etc.
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  createdBy   Int?     @map("created_by")
+  user        User?    @relation(fields: [createdBy], references: [id])
+
+  @@map("stock_movements")
+}
+
+model Sale {
+  id          Int      @id @default(autoincrement())
+  itemId      Int      @map("item_id")
+  item        Item     @relation(fields: [itemId], references: [id])
+  userId      Int      @map("user_id")
+  user        User     @relation(fields: [userId], references: [id])
+  quantity    Int
+  unitPrice   Decimal  @map("unit_price") @db.Decimal(10, 2)
+  totalPrice  Decimal  @map("total_price") @db.Decimal(10, 2)
+  saleDate    DateTime @default(now()) @map("sale_date")
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("sales")
+}
+

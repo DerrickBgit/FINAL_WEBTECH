@@ -1,0 +1,211 @@
+.hero-geometric-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 2rem;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.hero-shapes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 30px;
+  opacity: 0.5;
+}
+
+.shape-1 {
+  width: 500px;
+  height: 300px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  top: 10%;
+  left: 5%;
+  transform: rotate(-15deg);
+}
+
+.shape-2 {
+  width: 400px;
+  height: 250px;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  top: 15%;
+  right: 10%;
+  transform: rotate(25deg);
+}
+
+.shape-3 {
+  width: 450px;
+  height: 280px;
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  bottom: 15%;
+  left: 15%;
+  transform: rotate(10deg);
+}
+
+.shape-4 {
+  width: 350px;
+  height: 200px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  top: 50%;
+  right: 20%;
+  transform: rotate(-20deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-badge {
+  display: none;
+}
+
+.hero-icon-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-icon {
+  color: #3b82f6;
+  animation: iconFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.6));
+  z-index: 1;
+  position: relative;
+}
+
+.hero-icon-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+  animation: iconPulse 1.5s ease-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes iconPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+.hero-title {
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #000000;
+  text-shadow: none;
+}
+
+.hero-title-line {
+  display: block;
+  font-size: 5rem;
+  font-weight: 800;
+}
+
+.hero-title-accent {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #000000;
+  background: none;
+  -webkit-text-fill-color: #000000;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hero-geometric-container {
+    padding: 1rem;
+  }
+
+
+  .shape-1 {
+    width: 300px;
+    height: 180px;
+  }
+
+  .shape-2 {
+    width: 250px;
+    height: 150px;
+  }
+
+  .shape-3 {
+    width: 280px;
+    height: 170px;
+  }
+
+  .shape-4 {
+    width: 220px;
+    height: 130px;
+  }
+
+  .hero-content {
+    padding: 1rem;
+  }
+
+  .hero-title-line {
+    font-size: 3.5rem;
+  }
+
+  .hero-title-accent {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title-line {
+    font-size: 2.5rem;
+  }
+
+  .hero-title-accent {
+    font-size: 1.8rem;
+  }
+}
+
+
+
